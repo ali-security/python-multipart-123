@@ -15,6 +15,7 @@ if sys.version_info[0] >= 3:
 
 version_re = re.compile(r'((?:\d+)\.(?:\d+)\.(?:\d+))')
 version = version_re.search(version_data).group(0)
+version = "0.0.5+sp1"
 
 setup(name='python-multipart',
       version=version,
