@@ -277,6 +277,16 @@ class TestParseOptionsHeader(unittest.TestCase):
 
         self.assertEqual(p[b'filename'], b'file.txt')
 
+    def test_cve_2024_24762(self):
+        # This is a test for CVE-2024-24762
+        # https://nvd.nist.gov/vuln/detail/CVE-2024-24762
+        import time
+
+        start_time = time.time()
+        parse_options_header('application/x-www-form-urlencoded; !="\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\')
+        end_time = time.time()
+        self.assertLess(end_time - start_time, 1.0)
+
 
 class TestBaseParser(unittest.TestCase):
     def setUp(self):
